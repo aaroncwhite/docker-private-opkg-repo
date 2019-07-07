@@ -5,6 +5,6 @@ services:
       context: .
       
     volumes:
-      - ./packages:/packages
+      - ${PACKAGE_DIR}:/packages
     ports:
-      - 8080:80
+      - ${PORT}:80
