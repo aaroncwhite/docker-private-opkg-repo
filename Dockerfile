@@ -5,6 +5,7 @@ RUN apk update &&  \
     rm /etc/nginx/conf.d/default.conf
 
 COPY nginx/. /etc/nginx/conf.d/
+COPY bin/ /usr/bin/.
 
 RUN git clone -b 0.4.5 \
     https://git.yoctoproject.org/git/opkg-utils \
@@ -13,8 +14,6 @@ RUN git clone -b 0.4.5 \
     cp /opkg-utils/* /usr/bin/ && \
     chmod -R 755 /usr/bin
 
-COPY bin/ /usr/bin/.
-    
 WORKDIR /opkg
 EXPOSE 80
 ENTRYPOINT [ "/usr/bin/start-opkg-server.sh" ]
